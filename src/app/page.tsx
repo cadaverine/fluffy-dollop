@@ -1,15 +1,36 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { titles, profiles, experiences } from "./texts";
+import { ThemeContext } from "./theme-context";
 
 export default function Home() {
   const [lang, setLang] = useState<"en" | "es" | "ru">("es");
   const langs = ["en", "es", "ru"] as const;
   const activeIdx = langs.indexOf(lang);
 
+  const { theme, setTheme, themes } = useContext(ThemeContext);
+
   return (
-    <div className="min-h-screen font-[family-name:var(--font-geist-sans)] bg-transparent flex flex-col">
+    <div className={`min-h-screen font-[family-name:var(--font-geist-sans)] bg-transparent flex flex-col ${theme}`}>
+      {/* Theme switcher */}
+      <div className="w-full flex justify-start px-4 sm:px-8 pt-6 mb-2">
+        <div className="flex gap-2">
+          {themes.map((t) => (
+            <button
+              key={t}
+              onClick={() => setTheme(t)}
+              className={`px-3 py-1 rounded border text-xs font-mono transition-colors
+                ${theme === t
+                  ? "bg-foreground text-background border-foreground"
+                  : "bg-transparent text-gray-500 border-gray-300 hover:bg-gray-100"}
+              `}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
       {/* Языковой переключатель всегда наверху */}
       <div className="w-full flex justify-end lg:justify-end px-4 sm:px-8 pt-6">
         <div className="relative flex bg-gray-100 dark:bg-neutral-800 rounded-full border border-gray-300 dark:border-neutral-700 shadow-sm overflow-hidden w-[144px] h-10">

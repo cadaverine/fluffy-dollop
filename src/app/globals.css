@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -23,4 +24,92 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Theme: hacker8bit */
+body[data-theme="hacker8bit"] {
+  --background: #181818 !important;
+  --foreground: #00ff00 !important;
+  --font-sans: 'Press Start 2P', monospace, var(--font-geist-sans);
+  --font-mono: 'Press Start 2P', monospace, var(--font-geist-mono);
+  background: repeating-linear-gradient(135deg, #181818 0 2px, #222 2px 4px) !important;
+  color: var(--foreground) !important;
+  font-family: 'Press Start 2P', monospace, Arial, Helvetica, sans-serif !important;
+  image-rendering: pixelated;
+}
+
+body[data-theme="hacker8bit"] * {
+  font-family: 'Press Start 2P', monospace, Arial, Helvetica, sans-serif !important;
+  color: #00ff00 !important;
+  background: transparent;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+body[data-theme="hacker8bit"] .rounded-2xl,
+body[data-theme="hacker8bit"] .rounded-full,
+body[data-theme="hacker8bit"] .rounded,
+body[data-theme="hacker8bit"] .border,
+body[data-theme="hacker8bit"] .shadow,
+body[data-theme="hacker8bit"] .shadow-lg,
+body[data-theme="hacker8bit"] .shadow-xl {
+  border-radius: 0 !important;
+  box-shadow: 0 0 0 2px #00ff00, 0 0 8px #00ff00 !important;
+  border-color: #00ff00 !important;
+}
+
+body[data-theme="hacker8bit"] .bg-gradient-to-br,
+body[data-theme="hacker8bit"] .bg-gradient-to-tr {
+  background: #181818 !important;
+}
+
+body[data-theme="hacker8bit"] .text-gray-800,
+body[data-theme="hacker8bit"] .text-gray-500,
+body[data-theme="hacker8bit"] .text-gray-700,
+body[data-theme="hacker8bit"] .text-gray-200,
+body[data-theme="hacker8bit"] .text-gray-300,
+body[data-theme="hacker8bit"] .text-gray-100,
+body[data-theme="hacker8bit"] .text-background,
+body[data-theme="hacker8bit"] .text-white {
+  color: #00ff00 !important;
+}
+
+body[data-theme="hacker8bit"] .bg-blue-600,
+body[data-theme="hacker8bit"] .bg-gray-800,
+body[data-theme="hacker8bit"] .bg-blue-700,
+body[data-theme="hacker8bit"] .bg-gray-900 {
+  background: #181818 !important;
+  color: #00ff00 !important;
+  border-color: #00ff00 !important;
+}
+
+body[data-theme="hacker8bit"] button,
+body[data-theme="hacker8bit"] a {
+  border: 2px solid #00ff00 !important;
+  background: #181818 !important;
+  color: #00ff00 !important;
+  box-shadow: 0 0 0 2px #00ff00, 0 0 8px #00ff00 !important;
+  transition: none !important;
+}
+
+body[data-theme="hacker8bit"] button:hover,
+body[data-theme="hacker8bit"] a:hover {
+  background: #222 !important;
+  color: #00ff00 !important;
+  border-color: #00ff00 !important;
+}
+
+body[data-theme="hacker8bit"] code,
+body[data-theme="hacker8bit"] pre {
+  background: #111 !important;
+  color: #00ff00 !important;
+  border: 1px solid #00ff00 !important;
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 0.9em;
+}
+
+body[data-theme="hacker8bit"] svg {
+  color: #00ff00 !important;
+  fill: #00ff00 !important;
+  stroke: #00ff00 !important;
 }
