@@ -1,8 +1,22 @@
 "use client";
 import Image from "next/image";
-import { useState, useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import { titles, profiles, experiences } from "./texts";
 import { ThemeContext } from "./theme-context";
+import { startGalagaGame } from "./galaga-game";
+
+function GalagaEasterEgg() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const stop = startGalagaGame({ canvasRef });
+    return stop;
+  }, []);
+
+  return (
+    <canvas ref={canvasRef} width={560} height={320} style={{ width: '100%', maxWidth: '600px', border: '2px solid #7c3f00', background: '#fbe8a6', imageRendering: 'pixelated', display: 'block' }} />
+  );
+}
 
 export default function Home() {
   const [lang, setLang] = useState<"en" | "es" | "ru">("es");
@@ -10,16 +24,14 @@ export default function Home() {
   const activeIdx = langs.indexOf(lang);
 
   const { theme, setTheme, themes } = useContext(ThemeContext);
+  const [showGalaga, setShowGalaga] = useState(false);
 
-  // Определяем, какую аватарку показывать в зависимости от темы
   let profileImg = "/profile.jpg";
   if (theme === "retro") profileImg = "/profile_hacker8bit.jpg";
 
   return (
     <div className={`min-h-screen font-[family-name:var(--font-geist-sans)] bg-transparent flex flex-col ${theme}`}>
-      {/* Theme and Language switchers в одном горизонтальном блоке */}
       <div className="w-full flex flex-row justify-between items-center px-4 sm:px-8 pt-6 mb-2 gap-4">
-        {/* Theme switcher */}
         <div className="flex gap-2">
           {themes.map((t) => (
             <button
@@ -35,7 +47,6 @@ export default function Home() {
             </button>
           ))}
         </div>
-        {/* Language switcher */}
         <div className="relative flex bg-gray-100 dark:bg-neutral-800 rounded-full border border-gray-300 dark:border-neutral-700 shadow-sm overflow-hidden w-[144px] h-10">
           <span
             className="absolute top-0 left-0 h-full w-1/3 transition-transform duration-300 ease-in-out bg-foreground/90 dark:bg-white/20 rounded-full z-0"
@@ -96,12 +107,12 @@ export default function Home() {
                 <div className="mt-4 text-2xl font-bold text-gray-800 dark:text-gray-100 self-start">{profiles[lang].title}</div>
                 <div className="mt-2 text-base text-gray-700 dark:text-gray-300 text-justify">{profiles[lang].text}</div>
               </div>
-              <div className="flex gap-4 mt-2">
+              <div className="flex gap-4 mt-2 w-full max-w-[600px] mx-auto">
                 <a
                   href="http://linkedin.com/in/vladimir-chekholin-725573194"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full border border-solid border-blue-600 bg-blue-600 text-white px-5 py-2 font-medium text-sm transition-colors hover:bg-blue-700 hover:border-blue-700 shadow"
+                  className="flex-1 flex items-center justify-center gap-2 rounded-full border border-solid border-blue-600 bg-blue-600 text-white px-5 py-2 font-medium text-sm transition-colors hover:bg-blue-700 hover:border-blue-700 shadow min-w-[110px]"
                 >
                   <svg width="20" height="20" fill="currentColor" className="inline" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.5 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.599v5.597z"/>
@@ -112,14 +123,33 @@ export default function Home() {
                   href="https://github.com/cadaverine"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full border border-solid border-gray-800 bg-gray-800 text-white px-5 py-2 font-medium text-sm transition-colors hover:bg-gray-900 hover:border-gray-900 shadow"
+                  className="flex-1 flex items-center justify-center gap-2 rounded-full border border-solid border-gray-800 bg-gray-800 text-white px-5 py-2 font-medium text-sm transition-colors hover:bg-gray-900 hover:border-gray-900 shadow min-w-[110px]"
                 >
                   <svg width="20" height="20" fill="currentColor" className="inline" viewBox="0 0 24 24">
                     <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
                   </svg>
                   GitHub
                 </a>
+                {theme === "retro" && (
+                  <button
+                    onClick={() => setShowGalaga((v) => !v)}
+                    tabIndex={-1}
+                    className="flex-1 flex items-center justify-center gap-2 rounded-full border border-solid border-yellow-700 bg-yellow-300 text-yellow-900 px-5 py-2 font-medium text-sm transition-colors hover:bg-yellow-400 hover:border-yellow-800 shadow min-w-[110px]"
+                  >
+                    <svg width="20" height="20" fill="currentColor" className="inline" viewBox="0 0 24 24">
+                      <rect x="6" y="2" width="12" height="4" rx="1" fill="#7c3f00" />
+                      <rect x="4" y="6" width="16" height="4" rx="1" fill="#a0522d" />
+                      <rect x="10" y="10" width="4" height="8" rx="1" fill="#7c3f00" />
+                    </svg>
+                    Galaga
+                  </button>
+                )}
               </div>
+              {theme === "retro" && showGalaga && (
+                <div className="w-full max-w-[600px] mx-auto flex justify-center mt-4">
+                  <GalagaEasterEgg />
+                </div>
+              )}
             </section>
           </main>
           <div className="flex flex-col items-end lg:items-start w-full">
