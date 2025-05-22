@@ -2,7 +2,7 @@
 import { RefObject } from "react";
 
 export type GalagaGameOptions = {
-  canvasRef: RefObject<HTMLCanvasElement>;
+  canvasRef: RefObject<HTMLCanvasElement | null>;
 };
 
 export function startGalagaGame({ canvasRef }: GalagaGameOptions) {
