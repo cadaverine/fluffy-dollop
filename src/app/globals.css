@@ -26,90 +26,93 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Theme: hacker8bit */
-body[data-theme="hacker8bit"] {
-  --background: #181818 !important;
-  --foreground: #00ff00 !important;
+/* Theme: retro */
+body[data-theme="retro"] {
+  --background: #fbe8a6 !important;
+  --foreground: #7c3f00 !important;
   --font-sans: 'Press Start 2P', monospace, var(--font-geist-sans);
   --font-mono: 'Press Start 2P', monospace, var(--font-geist-mono);
-  background: repeating-linear-gradient(135deg, #181818 0 2px, #222 2px 4px) !important;
+  background: repeating-linear-gradient(135deg, #fbe8a6 0 2px, #f7c873 2px 4px) !important;
   color: var(--foreground) !important;
   font-family: 'Press Start 2P', monospace, Arial, Helvetica, sans-serif !important;
   image-rendering: pixelated;
+  font-size: 0.95em !important;
 }
 
-body[data-theme="hacker8bit"] * {
+body[data-theme="retro"] * {
   font-family: 'Press Start 2P', monospace, Arial, Helvetica, sans-serif !important;
-  color: #00ff00 !important;
+  color: #7c3f00 !important;
   background: transparent;
   border-radius: 0 !important;
   box-shadow: none !important;
+  font-size: 0.98em !important;
 }
 
-body[data-theme="hacker8bit"] .rounded-2xl,
-body[data-theme="hacker8bit"] .rounded-full,
-body[data-theme="hacker8bit"] .rounded,
-body[data-theme="hacker8bit"] .border,
-body[data-theme="hacker8bit"] .shadow,
-body[data-theme="hacker8bit"] .shadow-lg,
-body[data-theme="hacker8bit"] .shadow-xl {
+body[data-theme="retro"] .rounded-2xl,
+body[data-theme="retro"] .rounded-full,
+body[data-theme="retro"] .rounded,
+body[data-theme="retro"] .border,
+body[data-theme="retro"] .shadow,
+body[data-theme="retro"] .shadow-lg,
+body[data-theme="retro"] .shadow-xl {
   border-radius: 0 !important;
-  box-shadow: 0 0 0 2px #00ff00, 0 0 8px #00ff00 !important;
-  border-color: #00ff00 !important;
+  box-shadow: 0 0 0 2px #7c3f00, 0 0 8px #7c3f00 !important;
+  border-color: #7c3f00 !important;
 }
 
-body[data-theme="hacker8bit"] .bg-gradient-to-br,
-body[data-theme="hacker8bit"] .bg-gradient-to-tr {
-  background: #181818 !important;
+body[data-theme="retro"] .bg-gradient-to-br,
+body[data-theme="retro"] .bg-gradient-to-tr {
+  background: #fbe8a6 !important;
 }
 
-body[data-theme="hacker8bit"] .text-gray-800,
-body[data-theme="hacker8bit"] .text-gray-500,
-body[data-theme="hacker8bit"] .text-gray-700,
-body[data-theme="hacker8bit"] .text-gray-200,
-body[data-theme="hacker8bit"] .text-gray-300,
-body[data-theme="hacker8bit"] .text-gray-100,
-body[data-theme="hacker8bit"] .text-background,
-body[data-theme="hacker8bit"] .text-white {
-  color: #00ff00 !important;
+body[data-theme="retro"] .text-gray-800,
+body[data-theme="retro"] .text-gray-500,
+body[data-theme="retro"] .text-gray-700,
+body[data-theme="retro"] .text-gray-200,
+body[data-theme="retro"] .text-gray-300,
+body[data-theme="retro"] .text-gray-100,
+body[data-theme="retro"] .text-background,
+body[data-theme="retro"] .text-white {
+  color: #7c3f00 !important;
 }
 
-body[data-theme="hacker8bit"] .bg-blue-600,
-body[data-theme="hacker8bit"] .bg-gray-800,
-body[data-theme="hacker8bit"] .bg-blue-700,
-body[data-theme="hacker8bit"] .bg-gray-900 {
-  background: #181818 !important;
-  color: #00ff00 !important;
-  border-color: #00ff00 !important;
+body[data-theme="retro"] .bg-blue-600,
+body[data-theme="retro"] .bg-gray-800,
+body[data-theme="retro"] .bg-blue-700,
+body[data-theme="retro"] .bg-gray-900 {
+  background: #fbe8a6 !important;
+  color: #7c3f00 !important;
+  border-color: #7c3f00 !important;
 }
 
-body[data-theme="hacker8bit"] button,
-body[data-theme="hacker8bit"] a {
-  border: 2px solid #00ff00 !important;
-  background: #181818 !important;
-  color: #00ff00 !important;
-  box-shadow: 0 0 0 2px #00ff00, 0 0 8px #00ff00 !important;
+body[data-theme="retro"] button,
+body[data-theme="retro"] a {
+  border: 2px solid #7c3f00 !important;
+  background: #fbe8a6 !important;
+  color: #7c3f00 !important;
+  box-shadow: 0 0 0 2px #7c3f00, 0 0 8px #7c3f00 !important;
   transition: none !important;
+  font-size: 12px !important;
 }
 
-body[data-theme="hacker8bit"] button:hover,
-body[data-theme="hacker8bit"] a:hover {
-  background: #222 !important;
-  color: #00ff00 !important;
-  border-color: #00ff00 !important;
+body[data-theme="retro"] button:hover,
+body[data-theme="retro"] a:hover {
+  background: #f7c873 !important;
+  color: #7c3f00 !important;
+  border-color: #7c3f00 !important;
 }
 
-body[data-theme="hacker8bit"] code,
-body[data-theme="hacker8bit"] pre {
-  background: #111 !important;
-  color: #00ff00 !important;
-  border: 1px solid #00ff00 !important;
+body[data-theme="retro"] code,
+body[data-theme="retro"] pre {
+  background: #f7c873 !important;
+  color: #7c3f00 !important;
+  border: 1px solid #7c3f00 !important;
   font-family: 'Press Start 2P', monospace !important;
-  font-size: 0.9em;
+  font-size: 0.95em;
 }
 
-body[data-theme="hacker8bit"] svg {
-  color: #00ff00 !important;
-  fill: #00ff00 !important;
-  stroke: #00ff00 !important;
+body[data-theme="retro"] svg {
+  color: #7c3f00 !important;
+  fill: #7c3f00 !important;
+  stroke: #7c3f00 !important;
 }

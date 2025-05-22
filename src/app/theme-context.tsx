@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useState, useEffect } from "react";
 
-type Theme = "default" | "hacker8bit";
+export type Theme = "default" | "retro";
 
 export const ThemeContext = createContext<{
   theme: Theme;
@@ -10,7 +10,7 @@ export const ThemeContext = createContext<{
 }>({
   theme: "default",
   setTheme: () => {},
-  themes: ["default", "hacker8bit"],
+  themes: ["default", "retro"],
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -19,7 +19,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     document.body.dataset.theme = theme;
   }, [theme]);
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, themes: ["default", "hacker8bit"] }}>
+    <ThemeContext.Provider value={{ theme, setTheme, themes: ["default", "retro"] }}>
       {children}
     </ThemeContext.Provider>
   );

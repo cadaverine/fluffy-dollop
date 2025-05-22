@@ -11,16 +11,21 @@ export default function Home() {
 
   const { theme, setTheme, themes } = useContext(ThemeContext);
 
+  // Определяем, какую аватарку показывать в зависимости от темы
+  let profileImg = "/profile.jpg";
+  if (theme === "retro") profileImg = "/profile_hacker8bit.jpg";
+
   return (
     <div className={`min-h-screen font-[family-name:var(--font-geist-sans)] bg-transparent flex flex-col ${theme}`}>
-      {/* Theme switcher */}
-      <div className="w-full flex justify-start px-4 sm:px-8 pt-6 mb-2">
+      {/* Theme and Language switchers в одном горизонтальном блоке */}
+      <div className="w-full flex flex-row justify-between items-center px-4 sm:px-8 pt-6 mb-2 gap-4">
+        {/* Theme switcher */}
         <div className="flex gap-2">
           {themes.map((t) => (
             <button
               key={t}
               onClick={() => setTheme(t)}
-              className={`px-3 py-1 rounded border text-xs font-mono transition-colors
+              className={`flex-1 px-3 py-1 rounded-full border text-xs font-mono transition-colors h-10 min-w-[110px] w-[110px]
                 ${theme === t
                   ? "bg-foreground text-background border-foreground"
                   : "bg-transparent text-gray-500 border-gray-300 hover:bg-gray-100"}
@@ -30,9 +35,7 @@ export default function Home() {
             </button>
           ))}
         </div>
-      </div>
-      {/* Языковой переключатель всегда наверху */}
-      <div className="w-full flex justify-end lg:justify-end px-4 sm:px-8 pt-6">
+        {/* Language switcher */}
         <div className="relative flex bg-gray-100 dark:bg-neutral-800 rounded-full border border-gray-300 dark:border-neutral-700 shadow-sm overflow-hidden w-[144px] h-10">
           <span
             className="absolute top-0 left-0 h-full w-1/3 transition-transform duration-300 ease-in-out bg-foreground/90 dark:bg-white/20 rounded-full z-0"
@@ -62,7 +65,7 @@ export default function Home() {
             <header className="flex flex-row items-center gap-8 mb-4 w-full">
               <div className="flex-shrink-0 flex items-center justify-center h-[110px] w-[110px]">
                 <Image
-                  src="/profile.jpg"
+                  src={profileImg}
                   alt="Profile photo"
                   width={110}
                   height={110}
