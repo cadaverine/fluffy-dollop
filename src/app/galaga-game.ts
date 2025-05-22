@@ -66,22 +66,58 @@ export function startGalagaGame({ canvasRef }: GalagaGameOptions) {
 
   function drawShip() {
     if (!ctx) return;
+    ctx.save();
+    ctx.translate(ship.x, ship.y);
+    // Пиксельный корабль Galaga (тёмные оттенки, пиксель-арт)
+    // Центральный корпус
+    ctx.fillStyle = '#222';
+    ctx.fillRect(-2, 0, 4, 12);
+    ctx.fillRect(-4, 4, 8, 2);
+    // "Кабина"
+    ctx.fillStyle = '#444';
+    ctx.fillRect(-2, 2, 4, 2);
+    // Крылья
+    ctx.fillStyle = '#333';
+    ctx.fillRect(-8, 8, 4, 4);
+    ctx.fillRect(4, 8, 4, 4);
+    ctx.fillRect(-10, 10, 2, 4);
+    ctx.fillRect(8, 10, 2, 4);
+    // Нос
     ctx.fillStyle = '#7c3f00';
-    ctx.fillRect(ship.x - ship.w / 2, ship.y, ship.w, ship.h);
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(ship.x - 2, ship.y + 2, 4, 12);
+    ctx.fillRect(-2, 12, 4, 4);
+    ctx.restore();
   }
+
   function drawEnemies() {
     if (!ctx) return;
     enemies.forEach(e => {
-      if (e.alive) {
-        ctx.fillStyle = ['#a0522d', '#b8860b', '#8b0000', '#228b22'][e.row % 4];
-        ctx.fillRect(e.x - e.w / 2, e.y, e.w, e.h);
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(e.x - 8, e.y + 4, 16, 6);
-      }
+      if (!e.alive) return;
+      ctx.save();
+      ctx.translate(e.x, e.y);
+      // Пиксельный инопланетянин (тёмные оттенки, пиксель-арт)
+      // Тело
+      ctx.fillStyle = ['#7c3f00', '#3b2f1e', '#4b5563', '#1e293b'][e.row % 4];
+      ctx.fillRect(-8, 4, 16, 8);
+      ctx.fillRect(-10, 8, 20, 4);
+      // Голова
+      ctx.fillStyle = '#222';
+      ctx.fillRect(-4, 0, 8, 4);
+      // "Глаза"
+      ctx.fillStyle = '#444';
+      ctx.fillRect(-6, 6, 2, 2);
+      ctx.fillRect(4, 6, 2, 2);
+      // "Клешни"
+      ctx.fillStyle = '#333';
+      ctx.fillRect(-12, 10, 2, 4);
+      ctx.fillRect(10, 10, 2, 4);
+      // "Ноги"
+      ctx.fillStyle = '#222';
+      ctx.fillRect(-6, 12, 2, 2);
+      ctx.fillRect(4, 12, 2, 2);
+      ctx.restore();
     });
   }
+
   function drawBullets() {
     if (!ctx) return;
     ctx.fillStyle = '#7c3f00';
